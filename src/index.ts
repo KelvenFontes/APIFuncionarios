@@ -1,10 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import transporterRoutes from './routes/transporterRoutes';
+import router from './router';
 import { loggerMiddleware } from './middlewares/loggerMiddleware';
 import { requestResponseLogger } from './middlewares/requestResponseLogger';
-import { errorHandler } from './middlewares/errorHandler'; // Importe o middleware errorHandler
 
 dotenv.config();
 const app = express();
@@ -20,7 +19,7 @@ app.use((req, res, next) => {
 app.use(loggerMiddleware); // Use o middleware de logger
 app.use(requestResponseLogger); // Use o middleware de logging de solicitações e respostas
 
-app.use('/api', transporterRoutes);
+app.use('/api', router);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

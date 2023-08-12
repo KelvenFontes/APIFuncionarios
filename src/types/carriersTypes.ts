@@ -1,5 +1,4 @@
-// types/transporterTypes.ts
-export interface Transporter {
+export interface Carriers {
   id: number;
   name: string;
   email: string;
