@@ -7,10 +7,10 @@ import { updateCarriers } from './routes/updateCarriers';
 
 const router = Router();
 
-router.get('/transporters', getAllCarriers);
-router.get('/transporters/:id', getCarriersById);
-router.post('/transporters', createCarriers);
-router.put('/transporters/:id', updateCarriers);
-router.delete('/transporters/:id', deleteCarriers);
+router.get('/Carriers', getAllCarriers);
+router.get('/Carriers/:id', getCarriersById);
+router.post('/Carriers', createCarriers);
+router.put('/Carriers/:id', updateCarriers);
+router.delete('/Carriers/:id', deleteCarriers);
 
 export default router;
