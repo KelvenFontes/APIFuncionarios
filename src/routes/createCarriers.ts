@@ -12,16 +12,18 @@ export const createCarriers = async (req: Request, res: Response) => {
       transporterData.isActive = true;
     }
 
-    const query = 'INSERT INTO transporters (name, email, phone, address, city, state, postalCode, isActive, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())';
+    const query = 'INSERT INTO transporters (CNPJ, corporateName, fantasyName, address, city, UF, postalCode, phone, email, isActive, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
     const [result] = await pool.query<ResultSetHeader>(query, [
-      transporterData.name,
-      transporterData.email,
-      transporterData.phone,
+      transporterData.CNPJ,
+      transporterData.corporateName,
+      transporterData.fantasyName,
       transporterData.address,
       transporterData.city,
-      transporterData.state,
+      transporterData.UF,
       transporterData.postalCode,
-      transporterData.isActive,
+      transporterData.phone,
+      transporterData.email,
+      transporterData.isActive
     ]);
 
     if (result.affectedRows > 0) {
