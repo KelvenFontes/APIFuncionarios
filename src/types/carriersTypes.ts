@@ -1,12 +1,14 @@
 export interface Carriers {
   id: number;
-  name: string;
-  email: string;
-  phone: string;
+  CNPJ: string;
+  corporateName: string;
+  fantasyName: string;
   address: string;
   city: string;
-  state: string;
+  UF: string;
   postalCode: string;
+  phone: string;
+  email: string;
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
