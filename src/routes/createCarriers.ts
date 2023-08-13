@@ -7,12 +7,11 @@ export const createCarriers = async (req: Request, res: Response) => {
   try {
     const transporterData: Carriers = req.body;
 
-    // Se você quiser adicionar o campo 'isActive' como true por padrão
     if (!transporterData.hasOwnProperty('isActive')) {
       transporterData.isActive = true;
     }
 
-    const query = 'INSERT INTO transporters (name, email, phone, address, city, state, postalCode) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const query = 'INSERT INTO transporters (name, email, phone, address, city, state, postalCode, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
     const [result] = await pool.query<ResultSetHeader>(query, [
       transporterData.name,
       transporterData.email,
@@ -21,7 +20,7 @@ export const createCarriers = async (req: Request, res: Response) => {
       transporterData.city,
       transporterData.state,
       transporterData.postalCode,
-      // transporterData.isActive,
+      transporterData.isActive,
     ]);
 
     if (result.affectedRows > 0) {
