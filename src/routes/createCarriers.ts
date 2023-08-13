@@ -5,13 +5,14 @@ import { Carriers } from '../types/carriersTypes';
 
 export const createCarriers = async (req: Request, res: Response) => {
   try {
-    const transporterData: Carriers = req.body;
+
+    const transporterData: Omit<Carriers, 'createdAt'> = req.body;
 
     if (!transporterData.hasOwnProperty('isActive')) {
       transporterData.isActive = true;
     }
 
-    const query = 'INSERT INTO transporters (name, email, phone, address, city, state, postalCode, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const query = 'INSERT INTO transporters (name, email, phone, address, city, state, postalCode, isActive, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())';
     const [result] = await pool.query<ResultSetHeader>(query, [
       transporterData.name,
       transporterData.email,
