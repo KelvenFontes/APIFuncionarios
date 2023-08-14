@@ -14,9 +14,9 @@ export const updateCarriers = async (req: Request, res: Response) => {
     const [result] = await pool.query<ResultSetHeader>(query, [updatedData, id]);
 
     if (result.affectedRows > 0) {
-      res.status(200).json({ message: 'Transporter updated successfully' });
+      res.status(200).json({ message: 'Carrier updated successfully' });
     } else {
-      res.status(404).json({ error: 'Transporter not found' });
+      res.status(404).json({ error: 'Carrier not found' });
     }
   } catch (error: any) {
     res.status(500).json({ error: (error as Error).message });

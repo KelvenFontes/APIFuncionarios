@@ -83,9 +83,9 @@ export const createCarriers = async (req: Request, res: Response) => {
     ]);
 
     if (result.affectedRows > 0) {
-      res.status(201).json({ message: 'Transporter created successfully' });
+      res.status(201).json({ message: 'Carrier created successfully' });
     } else {
-      res.status(500).json({ error: 'Failed to create transporter' });
+      res.status(500).json({ error: 'Failed to create Carrier' });
     }
   } catch (error: any) {
     res.status(500).json({ error: error.message });
