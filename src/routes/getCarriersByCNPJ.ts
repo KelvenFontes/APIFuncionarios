@@ -9,8 +9,6 @@ export const getCarriersByCNPJ = async (req: Request, res: Response) => {
     const query = 'SELECT * FROM transporters WHERE CNPJ = ?';
     const [transporters] = await pool.query<RowDataPacket[]>(query, [CNPJ]);
 
-
-    console.log(CNPJ);
     if (transporters.length === 0) {
       res.status(404).json({ error: 'Transporter not found' });
     } else {
